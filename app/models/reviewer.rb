@@ -1,0 +1,3 @@
+class Reviewer < User
+  
+end

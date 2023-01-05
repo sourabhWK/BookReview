@@ -1,0 +1,41 @@
+<%
+=begin%>
+ <% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %> |
+  <%= link_to "Login", new_user_session_path %>
+<% end %> 
+<%
+=end%>
+
+<% if user_signed_in? %>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Hello <strong><%= current_user.email %></strong>.</a>
+      </li>
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+    </ul>
+  </div>
+</nav>
+
+
+<% else %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%= link_to "Sign up", new_user_registration_path %> |
+        <%= link_to "Login", new_user_session_path %>
+      </ul>
+    </div>
+  </nav>
+<% end %>
