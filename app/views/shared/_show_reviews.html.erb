@@ -1,0 +1,44 @@
+<div class="card text-center">
+  <div class="card-header">
+    Book name
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">      </h5>
+    <h1 class="card-text"><%= @book.title.upcase %></h1>
+    by - <%= show_book_writer(@book.writer_id).downcase %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to "Give Book Review", new_review_path(@book), class: "btn btn-primary" %>
+  </div>
+</div>
+
+
+<br>
+
+<div class="container">
+  <div class="row row-cols-4">
+
+    <h4>Reviews :</h4>
+
+    <% @reviews.each do |review| %>
+
+      <div class="col">
+        <div class="card-head">
+
+          <%= show_reviewer_name(review.id) %>
+
+        </div>
+        
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+
+              <%= review.description %>
+
+            </div>
+          </div> 
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

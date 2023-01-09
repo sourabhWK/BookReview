@@ -1,0 +1,12 @@
+<h1>Books</h1>
+
+<% @book.each do |book| %>
+  <%= book.title %>
+  <%= link_to "Edit", edit_book_path(book) %>
+  <%= link_to "Destroy", book_path(book), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+  <br>
+<% end %>
+

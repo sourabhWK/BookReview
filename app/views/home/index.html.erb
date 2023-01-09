@@ -1,11 +1,1 @@
 <h1>Home#index</h1>
-
-
-<% if user_signed_in? %>
-  <% if current_user.type.eql? "Writer" %>
-writer
-  <% else %>
-reviewer
-  <% end %> 
-
-<% end %> 

@@ -1,3 +1,3 @@
 class Writer < User
-
-end
+  has_many :books, dependent: :destroy
+end 
