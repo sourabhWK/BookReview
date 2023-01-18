@@ -1,12 +1,19 @@
 <h1>Books</h1>
 
 <% @book.each do |book| %>
-  <%= book.title %>
-  <%= link_to "Edit", edit_book_path(book) %>
-  <%= link_to "Destroy", book_path(book), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
-  <br>
+<div class="card text-center">
+  <div class="card-header">
+  <%= link_to "#{book.title}", review_path(book.id), class: "nav-link" %>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= link_to "Edit", edit_book_path(book) %>
+      <%= link_to "Destroy", book_path(book), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </p>
+  </div>
+</div>
+<br>
 <% end %>
-

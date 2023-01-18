@@ -5,13 +5,19 @@
   <div class="card-body">
     <h5 class="card-title">      </h5>
     <h1 class="card-text"><%= @book.title.upcase %></h1>
-    by - <%= show_book_writer(@book.writer_id).downcase %>
+    <% if is_reviewer(@book.writer_id) %>
+      by - <%= show_book_writer(@book.writer_id).downcase %>
+    <% end %>
   </div>
   <div class="card-footer text-muted">
-    <%= link_to "Give Book Review", new_review_path(@book), class: "btn btn-primary" %>
+    <% if is_reviewer(@book.writer_id) %>
+      <%= link_to "Give Book Review", new_review_path(@book), class: "btn btn-primary" %>
+    <% end %>
+
   </div>
 </div>
 
+<%= render "shared/like"%>
 
 <br>
 
@@ -30,12 +36,20 @@
         </div>
         
         <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
+          <div class="card-body">
 
-              <%= review.description %>
+            <%= review.description %>
 
-            </div>
-          </div> 
+          </div>
+        </div>
+
+        <% if show_reviewer_name(review.id).eql? "You" %>
+            <%= link_to "Delete", review_path(review), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          }, class: "btn btn-primary" %>
+        <% end %>
+
       </div>
 
     <% end %>

@@ -9,8 +9,12 @@ module ReviewsHelper
     end
   end
 
+  def is_reviewer(writer_id)
+    !current_user.id == writer_id
+  end
+
   def show_book(id)
-    return Book.find_by(id: id)
+    Book.find_by(id: id)
   end
 
   def show_reviewer_name(review_id)

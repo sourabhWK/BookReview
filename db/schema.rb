@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_194013) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_153836) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.integer "writer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["writer_id"], name: "index_books_on_writer_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "likeable_id"
+    t.string "likeable_type"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|

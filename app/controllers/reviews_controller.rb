@@ -2,7 +2,6 @@ include ReviewsHelper
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :verify_reviewer
   before_action :load_book, only: [:edit, :update, :destroy]
 
   def index
@@ -56,14 +55,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:description, :book_id)
-  end
-
-  def verify_reviewer
-    unless current_user.type.eql? "Reviewer"
-      # flash[:notice] = "You are not authorized to edit this user."
-      flash[:notice] = "You are Writer not authorized to edit this user(Reviewer)."
-      
-    end
   end
 
   def load_book
