@@ -10,14 +10,13 @@
     <% end %>
   </div>
   <div class="card-footer text-muted">
-    <% if is_reviewer(@book.writer_id) %>
+    <% if !is_reviewer(@book.writer_id) %>
       <%= link_to "Give Book Review", new_review_path(@book), class: "btn btn-primary" %>
     <% end %>
 
   </div>
 </div>
 
-<%= render "shared/like"%>
 
 <br>
 

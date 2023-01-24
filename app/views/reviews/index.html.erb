@@ -1,17 +1,3 @@
-<h1>All Available Books</h1>
 
-<%
-=begin%>
- <% @review.each do |review| %>
-  <%= review.description %>
-  <%= link_to "Edit", edit_review_path(review) %>
-  <%= link_to "Destroy", review_path(review), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
-  <br>
-<% end %> 
-<%
-=end%>
 
 <%= render "shared/show_books" %>
