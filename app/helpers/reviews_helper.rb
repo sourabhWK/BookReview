@@ -2,7 +2,7 @@ module ReviewsHelper
   def is_reviewed
     # puts " ====================== is called ================================="
     # puts "user id: #{current_user.id}, book id: #{params[:format]}"
-    if (Review.where(book_id: params[:format], reviewer_id: current_user.id)).count > 0
+    if (Review.where(book_id: params[:id], reviewer_id: current_user.id)).count > 0
       return true
     else
       return false

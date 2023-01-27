@@ -19,6 +19,16 @@
 
     <%= render 'shared/navbar' %>
 
+    <%
+=begin%>
+ <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %> 
+<%
+=end%>
+
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>

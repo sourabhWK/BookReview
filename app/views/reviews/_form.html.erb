@@ -1,11 +1,24 @@
 <%= form_with model: review do |form| %>
+
+<% if @review.errors.any? %>
+    <h2>The following errors prevented the review from being saved</h2>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div>
-    <%= form.label :description %><br>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: "form-label" %><br>
+    <%= form.text_field :description, class: "form-control" %>
 
-    <%= form.hidden_field :book_id, value: @para.id %>
+    <%= form.hidden_field :book_id, value: params[:id] %>
+    <%= form.hidden_field :reviewer_id, value: current_user.id %>
 
-    <%= form.submit %>
+    <br>
+
+    <%= form.submit "Create Review", class: "btn btn-primary" %>
   </div>
   
 <% end %>
